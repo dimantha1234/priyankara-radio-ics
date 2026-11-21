@@ -1,0 +1,19 @@
+# Secrets: never commit API keys
+.env
+.env.*
+*.key
+secrets.json
+
+# Python (for a future agent or backend)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Editor and system files
+.vscode/
+Thumbs.db
+.DS_Store
