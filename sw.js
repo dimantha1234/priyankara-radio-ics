@@ -1,7 +1,7 @@
 // Bump the version whenever this file list changes.
-const CACHE = 'parts-finder-v2';
+const CACHE = 'parts-finder-v3';
 const FILES = [
-  './', 'index.html', 'styles.css', 'app.js', 'resistor.js', 'parts.json', 'manifest.webmanifest',
+  './', 'index.html', 'styles.css', 'app.js', 'resistor.js', 'lookup.js', 'parts.json', 'manifest.webmanifest',
   'icon-180.png', 'icon-192.png', 'icon-512.png',
 ];
 

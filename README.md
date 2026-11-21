@@ -18,6 +18,7 @@ Plain HTML/CSS/JS. No build step, no frameworks, nothing loaded from the interne
 | `styles.css` | Layout and the cabinet drawing. Light and dark mode, safe-area insets, reduced motion. |
 | `app.js` | Loads `parts.json`, searches, draws the cabinet and opens the drawer sheet. Switches between the Parts and Resistors tabs. |
 | `resistor.js` | Resistors tab: type a value, pick Ω / kΩ / MΩ, see the 4-band and 5-band color code. |
+| `lookup.js` | Lookup tab: search any item online. Shows Wikipedia info and Wikimedia Commons pictures (free, no API key) plus Google, Images and Datasheet buttons. Needs internet. |
 | `sw.js` | Service worker. Precaches every file; network first, cache when offline. |
 | `manifest.webmanifest` | Home-screen app settings (name, icons, standalone). |
 | `icon-180.png`, `icon-192.png`, `icon-512.png` | App icon (180 is the iPhone home-screen icon). |
@@ -34,4 +35,4 @@ py -m http.server 8000, then open http://localhost:8000
 Edit `parts.json`, then commit and push. Open the app once online to refresh.
 
 If you add, rename or remove a file, update the list in `sw.js` and bump
-the version in its cache name (for example `parts-finder-v2` -> `parts-finder-v3`).
+the version in its cache name (for example `parts-finder-v3` -> `parts-finder-v4`).

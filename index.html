@@ -17,13 +17,12 @@
 </head>
 <body>
   <header class="top">
-    <div class="top-row">
-      <h1 id="shop">Parts finder</h1>
-      <nav class="views" aria-label="Pages">
-        <button type="button" class="view-tab" data-view="parts" aria-pressed="true" aria-label="Parts finder">Parts</button>
-        <button type="button" class="view-tab" data-view="res" aria-pressed="false" aria-label="Resistors: color code">Resistors</button>
-      </nav>
-    </div>
+    <h1 id="shop" class="visually-hidden">Parts finder</h1>
+    <nav class="views" aria-label="Pages">
+      <button type="button" class="view-tab" data-view="parts" aria-pressed="true" aria-label="Parts finder">Parts</button>
+      <button type="button" class="view-tab" data-view="res" aria-pressed="false" aria-label="Resistors: color code">Resistors</button>
+      <button type="button" class="view-tab" data-view="look" aria-pressed="false" aria-label="Lookup: search any item online">Lookup</button>
+    </nav>
     <div id="parts-bar">
       <label class="visually-hidden" for="q">Part number</label>
       <input id="q" class="field" type="search" placeholder="Part number, e.g. AN5835"
@@ -40,6 +39,12 @@
         <button type="button" class="unit" data-mult="1000000" aria-pressed="false" aria-label="Megohms">MΩ</button>
       </div>
     </div>
+    <form id="look-bar" class="look-bar" role="search" hidden>
+      <label class="visually-hidden" for="lq">Item to look up</label>
+      <input id="lq" class="field" type="search" placeholder="Any item, e.g. LM386"
+             autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" enterkeyhint="search">
+      <button class="go" type="submit" aria-label="Search online">Search</button>
+    </form>
   </header>
 
   <main id="parts">
@@ -56,6 +61,14 @@
     <div id="r-cards"></div>
   </main>
 
+  <main id="look" hidden>
+    <p id="l-status" class="status" aria-live="polite">Type any item (a part number, a component, a tool), then tap Search. Needs internet.</p>
+    <div id="l-links" class="links" hidden></div>
+    <div id="l-wiki"></div>
+    <h2 id="l-pics-h" class="l-head" hidden>Pictures</h2>
+    <div id="l-pics" class="pics"></div>
+  </main>
+
   <dialog id="sheet" class="sheet" aria-labelledby="sheet-title">
     <div class="sheet-body">
       <p id="sheet-cab" class="sheet-cab" hidden></p>
@@ -70,5 +83,6 @@
 
   <script src="app.js"></script>
   <script src="resistor.js"></script>
+  <script src="lookup.js"></script>
 </body>
 </html>
