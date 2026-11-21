@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Parts finder</title>
+  <meta name="description" content="Find which cabinet drawer holds a component.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Parts finder">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#2b3036">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Parts finder <small id="shop"></small></h1>
+    <label class="visually-hidden" for="q">Part number</label>
+    <input id="q" type="search" placeholder="Part number, e.g. AN5835"
+           autocapitalize="characters" autocorrect="off" autocomplete="off"
+           spellcheck="false" enterkeyhint="search">
+  </header>
+
+  <main>
+    <p id="status" class="status" aria-live="polite">Loading parts…</p>
+    <ul id="results" class="results"></ul>
+    <p id="more" class="hint" hidden>Type more of the number to narrow it down.</p>
+
+    <nav id="switcher" class="switcher" aria-label="Cabinets" hidden></nav>
+    <section id="cabinet" class="cabinet" aria-label="Cabinet"></section>
+  </main>
+
+  <dialog id="sheet" class="sheet" aria-labelledby="sheet-title">
+    <div class="sheet-body">
+      <p id="sheet-cab" class="sheet-cab" hidden></p>
+      <h2 id="sheet-title"></h2>
+      <p id="sheet-sub" class="sheet-sub"></p>
+      <ul id="sheet-parts" class="sheet-parts"></ul>
+      <p id="sheet-note" class="sheet-note" hidden></p>
+      <div id="sheet-map" class="minimap" aria-hidden="true"></div>
+      <button id="done" class="done" type="button" aria-label="Done, close drawer">Done</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
