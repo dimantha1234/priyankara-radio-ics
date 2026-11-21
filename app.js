@@ -151,7 +151,7 @@ function openSheet(ci, d) {
 
 function init(data) {
   cabs = data.cabinets;
-  $('shop').textContent = data.shop || '';
+  $('shop').textContent = data.shop || 'Parts finder';
   cabs.forEach((cab, ci) => cab.drawers.forEach(d => d.parts.forEach(part =>
     index.push({ ci, d, part, keys: forms(part) }))));
 
@@ -173,6 +173,15 @@ function init(data) {
   q.addEventListener('keydown', e => { if (e.key === 'Enter') q.blur(); });  // hide iPhone keyboard
   update();
 }
+
+// Top tabs: each button's data-view names a <main> and its header bar (id + "-bar").
+const tabs = document.querySelectorAll('.view-tab');
+tabs.forEach(tab => tab.addEventListener('click', () => tabs.forEach(t => {
+  const on = t === tab;
+  t.setAttribute('aria-pressed', on);
+  $(t.dataset.view).hidden = !on;
+  $(t.dataset.view + '-bar').hidden = !on;
+})));
 
 $('done').addEventListener('click', () => sheet.close());
 sheet.addEventListener('click', e => { if (e.target === sheet) sheet.close(); });  // backdrop

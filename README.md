@@ -16,7 +16,8 @@ Plain HTML/CSS/JS. No build step, no frameworks, nothing loaded from the interne
 |------|--------------|
 | `index.html` | The page: sticky search box, results list, cabinet view, drawer sheet. iPhone home-screen tags. |
 | `styles.css` | Layout and the cabinet drawing. Light and dark mode, safe-area insets, reduced motion. |
-| `app.js` | Loads `parts.json`, searches, draws the cabinet and opens the drawer sheet. |
+| `app.js` | Loads `parts.json`, searches, draws the cabinet and opens the drawer sheet. Switches between the Parts and Resistors tabs. |
+| `resistor.js` | Resistors tab: type a value, pick Ω / kΩ / MΩ, see the 4-band and 5-band color code. |
 | `sw.js` | Service worker. Precaches every file; network first, cache when offline. |
 | `manifest.webmanifest` | Home-screen app settings (name, icons, standalone). |
 | `icon-180.png`, `icon-192.png`, `icon-512.png` | App icon (180 is the iPhone home-screen icon). |
@@ -33,4 +34,4 @@ py -m http.server 8000, then open http://localhost:8000
 Edit `parts.json`, then commit and push. Open the app once online to refresh.
 
 If you add, rename or remove a file, update the list in `sw.js` and bump
-the version in its cache name (`parts-finder-v1` -> `parts-finder-v2`).
+the version in its cache name (for example `parts-finder-v2` -> `parts-finder-v3`).

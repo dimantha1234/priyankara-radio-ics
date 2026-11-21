@@ -65,6 +65,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
+[hidden] { display: none !important; }
+
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap;
@@ -78,10 +80,19 @@ button { font: inherit; color: inherit; cursor: pointer; }
   padding: calc(env(safe-area-inset-top) + 10px) max(16px, env(safe-area-inset-right)) 12px max(16px, env(safe-area-inset-left));
   box-shadow: 0 1px 6px rgba(0, 0, 0, .25);
 }
-.top h1 { margin: 0 0 8px; font-size: 17px; font-weight: 650; }
-.top h1 small { font-weight: 400; color: #b8c0c8; font-size: 14px; margin-left: 6px; }
+.top-row {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 6px 12px; margin-bottom: 10px;
+}
+.top h1 { margin: 0; font-size: 17px; font-weight: 650; }
+.views { display: flex; padding: 2px; border-radius: 10px; background: rgba(255, 255, 255, .12); }
+.view-tab {
+  min-height: 40px; padding: 0 16px; border: 0; border-radius: 8px;
+  background: none; color: #d5dbe1; font-size: 15px; font-weight: 600;
+}
+.view-tab[aria-pressed="true"] { background: #fff; color: #16191d; }
 
-#q {
+.field {
   -webkit-appearance: none; appearance: none;
   width: 100%;
   font-size: 18px; /* 16px or more stops iPhone zooming in */
@@ -90,7 +101,16 @@ button { font: inherit; color: inherit; cursor: pointer; }
   background: var(--input-bg); color: var(--input-fg);
   letter-spacing: .02em;
 }
-#q:focus-visible { outline-offset: 1px; }
+.field:focus-visible { outline-offset: 1px; }
+
+.res-bar { display: flex; gap: 8px; }
+.res-bar .field { flex: 1; min-width: 0; }
+.units { display: flex; gap: 4px; }
+.unit {
+  min-width: 50px; min-height: 46px; border: 0; border-radius: 10px;
+  background: rgba(255, 255, 255, .14); color: #fff; font-size: 17px; font-weight: 600;
+}
+.unit[aria-pressed="true"] { background: #1d6ae0; }
 
 main {
   max-width: 640px;
@@ -223,6 +243,30 @@ main {
   display: block; width: 100%; min-height: 48px;
   border: 0; border-radius: 12px;
   background: #1d6ae0; color: #fff; font-weight: 650; font-size: 17px;
+}
+
+/* Resistor color code view */
+.rvalue { margin: 4px 0 12px; font-size: 26px; font-weight: 700; }
+.rvalue small { display: block; font-size: 15px; font-weight: 400; color: var(--muted); }
+.rcard {
+  margin-bottom: 14px; padding: 14px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+}
+.rcard h2 { margin: 0 0 6px; font-size: 17px; }
+.rcard h2 small { font-weight: 400; color: var(--muted); font-size: 14px; }
+.rcard svg { display: block; width: 100%; max-width: 420px; height: auto; margin: 0 auto 10px; }
+.bands { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
+.bands li {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  min-height: 62px; padding: 6px 2px; border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, .35);
+  font-size: 18px; font-weight: 700; line-height: 1.2; text-align: center;
+}
+.bands b { font-size: 13px; font-weight: 700; overflow-wrap: anywhere; }
+.warn { margin: 10px 0 0; font-size: 14px; color: #a85b00; }
+@media (prefers-color-scheme: dark) {
+  .warn { color: #f0b54a; }
+  .bands li { border-color: rgba(255, 255, 255, .45); }
 }
 
 @media (prefers-reduced-motion: reduce) {

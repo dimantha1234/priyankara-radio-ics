@@ -17,20 +17,43 @@
 </head>
 <body>
   <header class="top">
-    <h1>Parts finder <small id="shop"></small></h1>
-    <label class="visually-hidden" for="q">Part number</label>
-    <input id="q" type="search" placeholder="Part number, e.g. AN5835"
-           autocapitalize="characters" autocorrect="off" autocomplete="off"
-           spellcheck="false" enterkeyhint="search">
+    <div class="top-row">
+      <h1 id="shop">Parts finder</h1>
+      <nav class="views" aria-label="Pages">
+        <button type="button" class="view-tab" data-view="parts" aria-pressed="true" aria-label="Parts finder">Parts</button>
+        <button type="button" class="view-tab" data-view="res" aria-pressed="false" aria-label="Resistors: color code">Resistors</button>
+      </nav>
+    </div>
+    <div id="parts-bar">
+      <label class="visually-hidden" for="q">Part number</label>
+      <input id="q" class="field" type="search" placeholder="Part number, e.g. AN5835"
+             autocapitalize="characters" autocorrect="off" autocomplete="off"
+             spellcheck="false" enterkeyhint="search">
+    </div>
+    <div id="res-bar" class="res-bar" hidden>
+      <label class="visually-hidden" for="rv">Resistance value</label>
+      <input id="rv" class="field" type="text" inputmode="decimal" placeholder="Value, e.g. 4.7"
+             autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="done">
+      <div class="units" role="group" aria-label="Unit">
+        <button type="button" class="unit" data-mult="1" aria-pressed="false" aria-label="Ohms">Ω</button>
+        <button type="button" class="unit" data-mult="1000" aria-pressed="true" aria-label="Kilohms">kΩ</button>
+        <button type="button" class="unit" data-mult="1000000" aria-pressed="false" aria-label="Megohms">MΩ</button>
+      </div>
+    </div>
   </header>
 
-  <main>
+  <main id="parts">
     <p id="status" class="status" aria-live="polite">Loading parts…</p>
     <ul id="results" class="results"></ul>
     <p id="more" class="hint" hidden>Type more of the number to narrow it down.</p>
 
     <nav id="switcher" class="switcher" aria-label="Cabinets" hidden></nav>
     <section id="cabinet" class="cabinet" aria-label="Cabinet"></section>
+  </main>
+
+  <main id="res" hidden>
+    <p id="r-status" class="status" aria-live="polite"></p>
+    <div id="r-cards"></div>
   </main>
 
   <dialog id="sheet" class="sheet" aria-labelledby="sheet-title">
@@ -46,5 +69,6 @@
   </dialog>
 
   <script src="app.js"></script>
+  <script src="resistor.js"></script>
 </body>
 </html>
